@@ -1,0 +1,37 @@
+target/
+logs/
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+logs/
+.nb-gradle/
+.gitlab-ci.yml
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+/logs/
+/things-data-process/rocketMqLogs/
+/rocketMqLogs/
+/hs_err_pid1624.log
+/hs_err_pid17516.log
+/replay_pid1624.log
+/replay_pid17516.log
+/things-back-api/logs/things-back-api_20201103.0.log
