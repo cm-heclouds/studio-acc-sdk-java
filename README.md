@@ -1,6 +1,6 @@
 ## 南向接入sdk(Java)
 本项目是中移物联网公司为方便Java开发者快速将设备接入OneNET Studio开发的SDK，关于
-OneNET Studio请进入主站了解详情，如果要了解OneNET Studio 设备接入请参考文档中心。本项目包含了SDK源码和实践demo代码，实践demo列出了SDK的使用方式，便于开发者使用或者进行二次开发
+OneNET Studio请进入主站了解详情，如果要了解OneNET Studio 设备接入请参考文档中心。本项目包含了SDK源码和实践demo代码，实践demo列出了SDK的使用方式，便于开发者使用或者进行SDK二次开发
 
 ## 环境
 JDK1.8及以上
