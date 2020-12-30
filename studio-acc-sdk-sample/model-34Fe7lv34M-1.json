@@ -1,0 +1,279 @@
+{
+  "properties" : [ {
+    "identifier" : "p1-double",
+    "name" : "p1-double",
+    "functionType" : "u",
+    "accessMode" : "rw",
+    "functionMode" : "property",
+    "desc" : null,
+    "dataType" : {
+      "type" : "double",
+      "specs" : {
+        "min" : "0",
+        "max" : "300",
+        "unit" : null,
+        "step" : null
+      }
+    }
+  }, {
+    "identifier" : "p1-p3-array",
+    "name" : "p1-p3-array",
+    "functionType" : "u",
+    "accessMode" : "rw",
+    "functionMode" : "property",
+    "desc" : null,
+    "dataType" : {
+      "type" : "array",
+      "specs" : {
+        "length" : 5,
+        "type" : "struct",
+        "specs" : [ {
+          "identifier" : "p1-p3-p1-a2",
+          "name" : "p1-p3-p1-a1",
+          "dataType" : {
+            "type" : "int64",
+            "specs" : {
+              "min" : "0",
+              "max" : "50",
+              "unit" : null,
+              "step" : null
+            }
+          }
+        }, {
+          "identifier" : "p1-p3-p2-enum",
+          "name" : "p1-p3-p2-enum",
+          "dataType" : {
+            "type" : "enum",
+            "specs" : {
+              "0" : "1",
+              "1" : "2"
+            }
+          }
+        } ]
+      }
+    }
+  }, {
+    "identifier" : "p2-struct",
+    "name" : "p2-struct",
+    "functionType" : "u",
+    "accessMode" : "rw",
+    "functionMode" : "property",
+    "desc" : null,
+    "dataType" : {
+      "type" : "struct",
+      "specs" : [ {
+        "identifier" : "p2-p1-1",
+        "name" : "p2-p1-1",
+        "dataType" : {
+          "type" : "int32",
+          "specs" : {
+            "min" : "0",
+            "max" : "100",
+            "unit" : null,
+            "step" : null
+          }
+        }
+      }, {
+        "identifier" : "p1-p2-2",
+        "name" : "p1-p2-2",
+        "dataType" : {
+          "type" : "string",
+          "specs" : {
+            "length" : "256"
+          }
+        }
+      } ]
+    }
+  } ],
+  "events" : [ {
+    "identifier" : "e1-info",
+    "name" : "e1-info",
+    "desc" : null,
+    "functionMode" : "event",
+    "outputData" : [ {
+      "identifier" : "e1-json-e1",
+      "name" : "e1-json-e1",
+      "dataType" : {
+        "type" : "struct",
+        "specs" : [ {
+          "identifier" : "e1-e2-struct-e1",
+          "name" : "e1-e2-struct-e1",
+          "dataType" : {
+            "type" : "int32",
+            "specs" : {
+              "min" : "0",
+              "max" : "30",
+              "unit" : null,
+              "step" : null
+            }
+          }
+        }, {
+          "identifier" : "e1-e2-int1",
+          "name" : "e1-e2-int1",
+          "dataType" : {
+            "type" : "int32",
+            "specs" : {
+              "min" : "0",
+              "max" : "100",
+              "unit" : null,
+              "step" : null
+            }
+          }
+        } ]
+      }
+    }, {
+      "identifier" : "e1-array-e1",
+      "name" : "e1-array-e1",
+      "dataType" : {
+        "type" : "array",
+        "specs" : {
+          "length" : 5,
+          "type" : "struct",
+          "specs" : [ {
+            "identifier" : "e2-test-t1",
+            "name" : "e2-test-t1",
+            "dataType" : {
+              "type" : "bool",
+              "specs" : {
+                "true" : "123",
+                "false" : "321"
+              }
+            }
+          } ]
+        }
+      }
+    } ],
+    "functionType" : "u",
+    "eventType" : "info"
+  }, {
+    "identifier" : "e2-warn",
+    "name" : "e2-warn",
+    "desc" : null,
+    "functionMode" : "event",
+    "outputData" : [ {
+      "identifier" : "e2-int-1",
+      "name" : "e2-int-1",
+      "dataType" : {
+        "type" : "int32",
+        "specs" : {
+          "min" : "0",
+          "max" : "100",
+          "unit" : null,
+          "step" : null
+        }
+      }
+    }, {
+      "identifier" : "e2-warn-e3",
+      "name" : "e2-warn-e3",
+      "dataType" : {
+        "type" : "date",
+        "specs" : { }
+      }
+    } ],
+    "functionType" : "u",
+    "eventType" : "alert"
+  } ],
+  "services" : [ {
+    "name" : "s1-test",
+    "identifier" : "s1-test",
+    "functionType" : "u",
+    "functionMode" : "service",
+    "desc" : null,
+    "callType" : "s",
+    "input" : [ ],
+    "output" : [ {
+      "identifier" : "service--test-1",
+      "name" : "service--test-1",
+      "dataType" : {
+        "type" : "int32",
+        "specs" : {
+          "min" : "0",
+          "max" : "20",
+          "unit" : null,
+          "step" : null
+        }
+      }
+    }, {
+      "identifier" : "s1-s2-t",
+      "name" : "s1-s2-t",
+      "dataType" : {
+        "type" : "struct",
+        "specs" : [ {
+          "identifier" : "s1-s2-t2",
+          "name" : "s1-s2-t1",
+          "dataType" : {
+            "type" : "double",
+            "specs" : {
+              "min" : "0",
+              "max" : "100",
+              "unit" : null,
+              "step" : null
+            }
+          }
+        }, {
+          "identifier" : "s1-s2-t4",
+          "name" : "s1-s2-t3",
+          "dataType" : {
+            "type" : "int64",
+            "specs" : {
+              "min" : "0",
+              "max" : "100",
+              "unit" : null,
+              "step" : null
+            }
+          }
+        } ]
+      }
+    } ]
+  }, {
+    "name" : "s2-test",
+    "identifier" : "s2-test",
+    "functionType" : "u",
+    "functionMode" : "service",
+    "desc" : null,
+    "callType" : "a",
+    "input" : [ ],
+    "output" : [ {
+      "identifier" : "s2-s1-p",
+      "name" : "s2-s1-p",
+      "dataType" : {
+        "type" : "array",
+        "specs" : {
+          "length" : 5,
+          "type" : "struct",
+          "specs" : [ {
+            "identifier" : "s2-s1-t8",
+            "name" : "s2-s1-t7",
+            "dataType" : {
+              "type" : "int32",
+              "specs" : {
+                "min" : "0",
+                "max" : "100",
+                "unit" : null,
+                "step" : null
+              }
+            }
+          }, {
+            "identifier" : "s2-s1-p8",
+            "name" : "s2-s1-p7",
+            "dataType" : {
+              "type" : "bitMap",
+              "specs" : {
+                "length" : 2,
+                "define" : [ {
+                  "bit" : 0,
+                  "0" : "fdsa",
+                  "1" : "fa"
+                }, {
+                  "bit" : 1,
+                  "0" : "fds",
+                  "1" : "we"
+                } ]
+              }
+            }
+          } ]
+        }
+      }
+    } ]
+  } ]
+}

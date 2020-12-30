@@ -1,0 +1,13 @@
+sdk:
+  api:
+    #    url: ssl://10.12.31.5:8883
+    url: tcp://10.12.31.5:1883
+    product-id: 34Fe7lv34M
+    dev-key: test123
+    access-key: wcNRh+HhX9UpWddNgxmPwZEpK5f3D1f/x9endYMZJT8=
+
+#    url: ssl://10.12.31.5:8883
+#    product-id: 1v8lnmV0CF
+#    dev-key: SN_43118124
+#    access-key: 7WWRC4Vvny95g38ZV28Pi12rkRPLmwkNJwUhk4XH5W8=
+

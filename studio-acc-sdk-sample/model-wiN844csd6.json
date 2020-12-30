@@ -1,0 +1,137 @@
+{
+  "properties" : [ {
+    "identifier" : "arraytest",
+    "name" : "arraytest",
+    "functionType" : "u",
+    "accessMode" : "rw",
+    "functionMode" : "property",
+    "desc" : null,
+    "dataType" : {
+      "type" : "array",
+      "specs" : {
+        "length" : 10,
+        "type" : "int32",
+        "specs" : {
+          "min" : "2",
+          "max" : "30",
+          "unit" : null,
+          "step" : null
+        }
+      }
+    }
+  }, {
+    "identifier" : "bit1",
+    "name" : "bitmaptest",
+    "functionType" : "u",
+    "accessMode" : "rw",
+    "functionMode" : "property",
+    "desc" : null,
+    "dataType" : {
+      "type" : "bitMap",
+      "specs" : {
+        "length" : 1,
+        "define" : [ {
+          "bit" : 0,
+          "0" : "1",
+          "1" : "23"
+        } ]
+      }
+    }
+  }, {
+    "identifier" : "hum",
+    "name" : "湿度",
+    "functionType" : "u",
+    "accessMode" : "rw",
+    "functionMode" : "property",
+    "desc" : null,
+    "dataType" : {
+      "type" : "float",
+      "specs" : {
+        "min" : "0",
+        "max" : "100",
+        "unit" : "相对湿度 / %RH",
+        "step" : "0.01"
+      }
+    }
+  }, {
+    "identifier" : "temp",
+    "name" : "温度",
+    "functionType" : "u",
+    "accessMode" : "rw",
+    "functionMode" : "property",
+    "desc" : null,
+    "dataType" : {
+      "type" : "int32",
+      "specs" : {
+        "min" : "0",
+        "max" : "40",
+        "unit" : "摄氏度 / °C",
+        "step" : "1"
+      }
+    }
+  }, {
+    "identifier" : "tructtest",
+    "name" : "structtest",
+    "functionType" : "u",
+    "accessMode" : "rw",
+    "functionMode" : "property",
+    "desc" : null,
+    "dataType" : {
+      "type" : "struct",
+      "specs" : [ {
+        "identifier" : "struct-p1",
+        "name" : "struct-p1",
+        "dataType" : {
+          "type" : "int32",
+          "specs" : {
+            "min" : "0",
+            "max" : "20",
+            "unit" : null,
+            "step" : null
+          }
+        }
+      }, {
+        "identifier" : "struct-p2",
+        "name" : "struct-p2",
+        "dataType" : {
+          "type" : "bool",
+          "specs" : {
+            "true" : "1",
+            "false" : "2"
+          }
+        }
+      } ]
+    }
+  } ],
+  "events" : [ {
+    "identifier" : "tem_warn",
+    "name" : "温度告警",
+    "desc" : null,
+    "functionMode" : "event",
+    "outputData" : [ {
+      "identifier" : "tem_warn_param",
+      "name" : "温度参数",
+      "dataType" : {
+        "type" : "int32",
+        "specs" : {
+          "min" : "35",
+          "max" : "40",
+          "unit" : "摄氏度 / °C",
+          "step" : "1"
+        }
+      }
+    } ],
+    "functionType" : "u",
+    "eventType" : "alert"
+  } ],
+  "services" : [ {
+    "name" : "service-test",
+    "identifier" : "service_test",
+    "functionType" : "u",
+    "functionMode" : "service",
+    "desc" : null,
+    "callType" : "s",
+    "input" : [ ],
+    "output" : [ ]
+  } ]
+}
