@@ -657,7 +657,8 @@ public class OpenApiExtentionProcessor extends AbstractProcessor {
     public void buildInOrOutputDto(List<InOrOutputData> outputDatas, List<FieldSpec> outputFileds, String identifier) throws Exception {
         for (InOrOutputData outputDatadata : outputDatas) {
             String outputIdentifier = outputDatadata.getParamIdentifier().replace("-", "");
-            String type = outputDatadata.getDataType().getType();
+            String outputFileName = identifier + OneJsonUtil.firstCharUpperCase(outputIdentifier);
+                    String type = outputDatadata.getDataType().getType();
             Object specs = outputDatadata.getDataType().getSpecs();
             switch (type) {
                 case "struct":
@@ -673,8 +674,8 @@ public class OpenApiExtentionProcessor extends AbstractProcessor {
                             AnnotationSpec annotation = AnnotationSpec.builder(JSONField.class).addMember("name", "$S", data.getParamIdentifier()).build();
                             fieldSpecList.add(FieldSpec.builder(getClassTypeByDataType(data.getDataType().getType()), paramIdentifier, Modifier.PRIVATE).addAnnotation(annotation).build());
                         }
-                        buildStructDto(outputIdentifier, fieldSpecList);
-                        ClassName classDto = ClassName.get("com.onenet.studio.acc.sdk.dto", OneJsonUtil.firstCharUpperCase(outputIdentifier) + STRUCT_DTO_SUFFIX);
+                        buildStructDto(outputFileName, fieldSpecList);
+                        ClassName classDto = ClassName.get("com.onenet.studio.acc.sdk.dto", OneJsonUtil.firstCharUpperCase(outputFileName) + STRUCT_DTO_SUFFIX);
                         AnnotationSpec annotation = AnnotationSpec.builder(JSONField.class).addMember("name", "$S", outputDatadata.getParamIdentifier()).build();
                         outputFileds.add(FieldSpec.builder(classDto, outputIdentifier).addAnnotation(annotation).build());
                     } else {
@@ -699,8 +700,8 @@ public class OpenApiExtentionProcessor extends AbstractProcessor {
                                 AnnotationSpec annotation = AnnotationSpec.builder(JSONField.class).addMember("name", "$S", data.getParamIdentifier()).build();
                                 fields.add(FieldSpec.builder(getClassTypeByDataType(data.getDataType().getType()), dataIdentifier, Modifier.PRIVATE).addAnnotation(annotation).build());
                             }
-                            buildStructDto(outputIdentifier, fields);
-                            ClassName classDto = ClassName.get("com.onenet.studio.acc.sdk.dto", OneJsonUtil.firstCharUpperCase(outputIdentifier) + STRUCT_DTO_SUFFIX);
+                            buildStructDto(outputFileName, fields);
+                            ClassName classDto = ClassName.get("com.onenet.studio.acc.sdk.dto", OneJsonUtil.firstCharUpperCase(outputFileName) + STRUCT_DTO_SUFFIX);
                             AnnotationSpec annotation = AnnotationSpec.builder(JSONField.class).addMember("name", "$S", outputDatadata.getParamIdentifier()).build();
                             outputFileds.add(FieldSpec.builder(ArrayTypeName.of(classDto), outputIdentifier).addAnnotation(annotation).build());
                         } else {
