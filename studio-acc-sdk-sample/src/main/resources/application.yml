@@ -1,13 +1,10 @@
 sdk:
   api:
-    #    url: ssl://10.12.31.5:8883
-    url: tcp://10.12.31.5:1883
+    #    url: ssl://183.230.102.116:8883  加密连接
+    url: tcp://218.201.45.7:1883
+    # 产品ID
     product-id: 34Fe7lv34M
+    # 设备名称
     dev-key: test123
+    # 产品key
     access-key: wcNRh+HhX9UpWddNgxmPwZEpK5f3D1f/x9endYMZJT8=
-
-#    url: ssl://10.12.31.5:8883
-#    product-id: 1v8lnmV0CF
-#    dev-key: SN_43118124
-#    access-key: 7WWRC4Vvny95g38ZV28Pi12rkRPLmwkNJwUhk4XH5W8=
-
