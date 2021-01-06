@@ -33,7 +33,8 @@ public class OnMessageCallback implements MqttCallback {
                 mqttClient.connect(connOpts);
                 List<String> topic = context.getTopics();
                 if (topic.size() > 0) {
-                    mqttClient.subscribe((String[]) topic.toArray());
+                    String[] needSubTopic = new String[topic.size()];
+                    mqttClient.subscribe(topic.toArray(needSubTopic));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
