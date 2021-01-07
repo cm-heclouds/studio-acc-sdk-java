@@ -70,7 +70,7 @@ studio-acc-sdk-java
 | API功能 | 调用方法 | 返回值 | 备注 |
 | :-----: | :----: | :----: | :----: |
 | 多个属性上报 | propertyUpload | 返回类型：int，0:上报成功,1:上报失败 | 参数为需要上报的设备属性，参数为null的数据项不参与上报 |
-| 单个属性上报 | *PropertyUpload | 返回类型：int，0:上报成功,1:上报失败 | *表示功能点标识符，如有一个identifier为test的标识符，则方法名为testPropertyUpload |
+| 单个属性上报 | *PropertyUpload | 返回类型：int，0:上报成功,1:上报失败 | *表示功能点标识符，如有一个identifier为test的功能点，则方法名为testPropertyUpload |
 | 期望值获取 | propertyDesiredGet | 返回类型：com.alibaba.fastjson.JSONObject类型 | 参数为想要获取的功能点的标识符数组 |
 | 期望值删除 | propertyDesiredDel | 返回类型：int，0:删除成功,1:删除失败 | 参数为要删除的功能点的标识符（key）和版本（value）的Map，版本可在期望值获取接口上查看 |
 | 属性设置 | propertySet | 无返回值，该方法为订阅属性设置topic | 有属性设置的命令时会调用参数中用户自定义的回调函数，用户处理完业务逻辑后`需要调用propertySetReply`方法回复平台设置结果 |
