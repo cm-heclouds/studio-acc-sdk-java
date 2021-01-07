@@ -275,7 +275,7 @@ public class OpenApiExtentionProcessor extends AbstractProcessor {
             setGetMethods.add(get);
         }
 
-        TypeSpec dtoClass = TypeSpec.classBuilder(OneJsonUtil.firstCharUpperCase(identifier) + STRUCT_DTO_SUFFIX)
+        TypeSpec dtoClass = TypeSpec.classBuilder(identifier + STRUCT_DTO_SUFFIX)
                 .addModifiers(Modifier.PUBLIC)
                 .addMethods(setGetMethods)
                 .addFields(fieldSpecs)
@@ -330,8 +330,12 @@ public class OpenApiExtentionProcessor extends AbstractProcessor {
                             AnnotationSpec annotation = AnnotationSpec.builder(JSONField.class).addMember("name", "$S", data.getParamIdentifier()).build();
                             fieldSpecList.add(FieldSpec.builder(getClassTypeByDataType(data.getDataType().getType()), paramIdentifier, Modifier.PRIVATE).addAnnotation(annotation).build());
                         }
-                        buildStructDto(identifier, fieldSpecList);
-                        ClassName classDto = ClassName.get("com.onenet.studio.acc.sdk.dto", OneJsonUtil.firstCharUpperCase(identifier) + STRUCT_DTO_SUFFIX);
+                        String dtoName = identifier;
+                        if (!dtoName.startsWith("$")) {
+                            dtoName = OneJsonUtil.firstCharUpperCase(dtoName);
+                        }
+                        buildStructDto(dtoName, fieldSpecList);
+                        ClassName classDto = ClassName.get("com.onenet.studio.acc.sdk.dto", dtoName + STRUCT_DTO_SUFFIX);
                         params.add(ParameterSpec.builder(classDto, identifier).build());
                         map.put(identifier, "JSON.toJSON(" + identifier + ")");
                         // 生成单个功能点方法
@@ -358,8 +362,12 @@ public class OpenApiExtentionProcessor extends AbstractProcessor {
                                 AnnotationSpec annotation = AnnotationSpec.builder(JSONField.class).addMember("name", "$S", data.getParamIdentifier()).build();
                                 fieldSpecList.add(FieldSpec.builder(getClassTypeByDataType(data.getDataType().getType()), paramIdentifier, Modifier.PRIVATE).addAnnotation(annotation).build());
                             }
-                            buildStructDto(identifier, fieldSpecList);
-                            ClassName classDto = ClassName.get("com.onenet.studio.acc.sdk.dto", OneJsonUtil.firstCharUpperCase(identifier) + STRUCT_DTO_SUFFIX);
+                            String dtoName = identifier;
+                            if (!dtoName.startsWith("$")) {
+                                dtoName = OneJsonUtil.firstCharUpperCase(dtoName);
+                            }
+                            buildStructDto(dtoName, fieldSpecList);
+                            ClassName classDto = ClassName.get("com.onenet.studio.acc.sdk.dto", dtoName + STRUCT_DTO_SUFFIX);
                             params.add(ParameterSpec.builder(ArrayTypeName.of(classDto), identifier).build());
                             map.put(identifier, "JSON.toJSON(" + identifier + ")");
                             // 生成单个功能点方法
@@ -567,8 +575,12 @@ public class OpenApiExtentionProcessor extends AbstractProcessor {
 
             map.put(identifier, "JSON.toJSON(" + identifier + ")");
             identifierMap.put(identifier, event.getIdentifier());
-            buildStructDto(identifier, outputFields);
-            ClassName classDto = ClassName.get("com.onenet.studio.acc.sdk.dto", OneJsonUtil.firstCharUpperCase(identifier) + STRUCT_DTO_SUFFIX);
+            String dtoName = identifier;
+            if (!dtoName.startsWith("$")) {
+                dtoName = OneJsonUtil.firstCharUpperCase(dtoName);
+            }
+            buildStructDto(dtoName, outputFields);
+            ClassName classDto = ClassName.get("com.onenet.studio.acc.sdk.dto", dtoName + STRUCT_DTO_SUFFIX);
             params.add(ParameterSpec.builder(classDto, identifier).build());
             builder.addJavadoc(" @param " + identifier + " 事件输出标识符为" + identifier +"的参数\n");
         }
@@ -633,8 +645,12 @@ public class OpenApiExtentionProcessor extends AbstractProcessor {
 
             List<FieldSpec> outputFields = new ArrayList<>();
             buildInOrOutputDto(outputDatas, outputFields, identifier);
-            buildStructDto(identifier, outputFields);
-            ClassName classDto = ClassName.get("com.onenet.studio.acc.sdk.dto", OneJsonUtil.firstCharUpperCase(identifier) + STRUCT_DTO_SUFFIX);
+            String dtoName = identifier;
+            if (!dtoName.startsWith("$")) {
+                dtoName = OneJsonUtil.firstCharUpperCase(dtoName);
+            }
+            buildStructDto(dtoName, outputFields);
+            ClassName classDto = ClassName.get("com.onenet.studio.acc.sdk.dto", dtoName + STRUCT_DTO_SUFFIX);
             methodBuilder.addJavadoc(" @param " + identifier + " 标识符为" + identifier + "的服务输出参数\n");
             methodBuilder.addParameter(ParameterSpec.builder(classDto, identifier).build());
 
@@ -657,7 +673,7 @@ public class OpenApiExtentionProcessor extends AbstractProcessor {
     public void buildInOrOutputDto(List<InOrOutputData> outputDatas, List<FieldSpec> outputFileds, String identifier) throws Exception {
         for (InOrOutputData outputDatadata : outputDatas) {
             String outputIdentifier = outputDatadata.getParamIdentifier().replace("-", "");
-            String outputFileName = identifier + OneJsonUtil.firstCharUpperCase(outputIdentifier);
+            String outputFileName = OneJsonUtil.firstCharUpperCase(identifier) + OneJsonUtil.firstCharUpperCase(outputIdentifier);
                     String type = outputDatadata.getDataType().getType();
             Object specs = outputDatadata.getDataType().getSpecs();
             switch (type) {
@@ -675,7 +691,7 @@ public class OpenApiExtentionProcessor extends AbstractProcessor {
                             fieldSpecList.add(FieldSpec.builder(getClassTypeByDataType(data.getDataType().getType()), paramIdentifier, Modifier.PRIVATE).addAnnotation(annotation).build());
                         }
                         buildStructDto(outputFileName, fieldSpecList);
-                        ClassName classDto = ClassName.get("com.onenet.studio.acc.sdk.dto", OneJsonUtil.firstCharUpperCase(outputFileName) + STRUCT_DTO_SUFFIX);
+                        ClassName classDto = ClassName.get("com.onenet.studio.acc.sdk.dto", outputFileName + STRUCT_DTO_SUFFIX);
                         AnnotationSpec annotation = AnnotationSpec.builder(JSONField.class).addMember("name", "$S", outputDatadata.getParamIdentifier()).build();
                         outputFileds.add(FieldSpec.builder(classDto, outputIdentifier).addAnnotation(annotation).build());
                     } else {
@@ -701,7 +717,7 @@ public class OpenApiExtentionProcessor extends AbstractProcessor {
                                 fields.add(FieldSpec.builder(getClassTypeByDataType(data.getDataType().getType()), dataIdentifier, Modifier.PRIVATE).addAnnotation(annotation).build());
                             }
                             buildStructDto(outputFileName, fields);
-                            ClassName classDto = ClassName.get("com.onenet.studio.acc.sdk.dto", OneJsonUtil.firstCharUpperCase(outputFileName) + STRUCT_DTO_SUFFIX);
+                            ClassName classDto = ClassName.get("com.onenet.studio.acc.sdk.dto", outputFileName + STRUCT_DTO_SUFFIX);
                             AnnotationSpec annotation = AnnotationSpec.builder(JSONField.class).addMember("name", "$S", outputDatadata.getParamIdentifier()).build();
                             outputFileds.add(FieldSpec.builder(ArrayTypeName.of(classDto), outputIdentifier).addAnnotation(annotation).build());
                         } else {
