@@ -28,9 +28,9 @@ public class PropertyPost {
     public void init() {
         OpenApiExtention extention = new OpenApiExtention(openApi);
         propertyUp(extention);
-//        propertySet(extention);
-//        peropertyGet(extention);
-//        desiredGet(extention);
+        propertySet(extention);
+        peropertyGet(extention);
+        desiredGet(extention);
 //        desiredDel(extention);
     }
 
@@ -94,9 +94,9 @@ public class PropertyPost {
                 System.out.println("receive oneJson : " + oneJson);
                 JSONObject json = JSON.parseObject(oneJson);
                 try {
-                    // 返回的属性与要收到的属性要对应上，否则不成功
+                    // 返回的属性与收到的属性要对应上，否则不成功
                     Map<String, Object> map = new HashMap<>();
-                    map.put("p1-double", 2);
+                    map.put("DeviceStatus", 1);
                     extention.propertyGetReply(json.getString("id"), 200, "success", map);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -116,8 +116,8 @@ public class PropertyPost {
      **/
     public void desiredGet(OpenApiExtention extention) {
         List<String> list = new ArrayList<>();
-        list.add("p1-double");
-        list.add("p2-struct");
+        list.add("DeviceStatus");
+
         try {
             JSONObject get = extention.propertyDesiredGet(list.toArray(new String[list.size()]), 5000);
             System.out.println("desired get oneJson : " + get.toJSONString());
@@ -136,7 +136,7 @@ public class PropertyPost {
      **/
     public void desiredDel(OpenApiExtention extention) {
         Map<String, Integer> map = new HashMap<>();
-        map.put("p2-struct", 1);
+        map.put("DeviceStatus", 1);
         try {
             int result = extention.propertyDesiredDel(5000, map);
             System.out.println("desired del result : " + result);

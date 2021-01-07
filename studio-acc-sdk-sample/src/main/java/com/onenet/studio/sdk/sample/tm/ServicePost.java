@@ -25,13 +25,13 @@ public class ServicePost {
     @PostConstruct
     public void init() {
         OpenApiExtention extention = new OpenApiExtention(openApi);
-        //serviceInvoke(extention);
+        serviceInvoke(extention);
     }
 
     public void serviceInvoke(OpenApiExtention extention) {
         try {
             extention.realInfoServiceInvoke(oneJson -> {
-                System.out.println("s1test receive oneJson : " + oneJson);
+                System.out.println("receive oneJson : " + oneJson);
                 JSONObject jsonObject = JSON.parseObject(oneJson);
 
                 RealInfoStructDTO dto = new RealInfoStructDTO();
