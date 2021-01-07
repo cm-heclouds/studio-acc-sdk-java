@@ -2,16 +2,15 @@ package com.onenet.studio.sdk.sample.tm;
 
 import com.onenet.studio.acc.sdk.OpenApi;
 import com.onenet.studio.acc.sdk.OpenApiExtention;
-import com.onenet.studio.acc.sdk.dto.E1arraye1StructDTO;
-import com.onenet.studio.acc.sdk.dto.E1infoStructDTO;
-import com.onenet.studio.acc.sdk.dto.E1jsone1StructDTO;
-import com.onenet.studio.acc.sdk.dto.E2warnStructDTO;
+import com.onenet.studio.acc.sdk.dto.FaultInfoStructDTO;
+import com.onenet.studio.acc.sdk.dto.FaultStructDTO;
+import com.onenet.studio.acc.sdk.dto.WorkInfoStructDTO;
+import com.onenet.studio.acc.sdk.dto.WorkStructDTO;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 物模型事件测试类
@@ -28,7 +27,7 @@ public class EventPost {
     @PostConstruct
     public void init() {
         OpenApiExtention extention = new OpenApiExtention(openApi);
-//        eventUp(extention);
+        eventUp(extention);
     }
 
     /**
@@ -39,23 +38,32 @@ public class EventPost {
      * @param extention 物模型扩展API
      **/
     public void eventUp(OpenApiExtention extention) {
-        E1infoStructDTO dto1 = new E1infoStructDTO();
-        E1jsone1StructDTO dto11 = new E1jsone1StructDTO();
-        dto11.setE1e2int1(2);
-        dto11.setE1e2structe1(3);
-        dto1.setE1jsone1(dto11);
-        List<E1arraye1StructDTO> list = new ArrayList<>();
-        E1arraye1StructDTO dto12 = new E1arraye1StructDTO();
-        dto12.setE2testt1(true);
-        list.add(dto12);
-        dto1.setE1arraye1(list.toArray(new E1arraye1StructDTO[list.size()]));
+        FaultStructDTO dto1 = new FaultStructDTO();
+        dto1.setCode("200");
+        dto1.setState(1);
+        FaultInfoStructDTO dto11 = new FaultInfoStructDTO();
+        dto11.setDoor(1);
+        dto11.setFloor(1);
+        dto11.setLevel(1);
+        dto11.setPerson(1);
+        dto11.setRun(1);
+        dto11.setSpeed(1);
+        dto1.setInfo(dto11);
 
-        E2warnStructDTO dto2 = new E2warnStructDTO();
-        dto2.setE2int1(1);
-        dto2.setE2warne3(2L);
+        WorkStructDTO dto2 = new WorkStructDTO();
+        dto2.setPoint(1L);
+        dto2.setSec(1);
+        WorkInfoStructDTO dto21 = new WorkInfoStructDTO();
+        dto21.setDoor(1);
+        dto21.setFloor(1);
+        dto21.setLevel(1);
+        dto21.setPerson(1);
+        dto21.setRun(1);
+        dto21.setSpeed(1f);
+        dto2.setInfo(dto21);
 
         try {
-           int result = extention.eventUpload(5000, dto1, dto2);
+           int result = extention.eventUpload(5000, dto1, null);
             System.out.println("event upload result : " + result);
         } catch (Exception e) {
             e.printStackTrace();

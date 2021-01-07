@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date: 2020/12/22
  */
 @SpringBootApplication
-@ThingsModelConfiguration("model-34Fe7lv34M-1.json")
+@ThingsModelConfiguration("src/main/resources/model-q2tc3251JM.json")
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

@@ -1,0 +1,386 @@
+{
+  "properties" : [ {
+    "identifier" : "DeviceStatus",
+    "name" : "设备运行状态",
+    "functionType" : "u",
+    "accessMode" : "rw",
+    "functionMode" : "property",
+    "desc" : "设置设备重启",
+    "dataType" : {
+      "type" : "enum",
+      "specs" : {
+        "0" : "正常运行",
+        "1" : "重启设备"
+      }
+    }
+  }, {
+    "identifier" : "DeviceVersion",
+    "name" : "固件版本号",
+    "functionType" : "u",
+    "accessMode" : "r",
+    "functionMode" : "property",
+    "desc" : "设备固件版本",
+    "dataType" : {
+      "type" : "string",
+      "specs" : {
+        "length" : "256"
+      }
+    }
+  }, {
+    "identifier" : "lift",
+    "name" : "电梯运行信息",
+    "functionType" : "u",
+    "accessMode" : "r",
+    "functionMode" : "property",
+    "desc" : null,
+    "dataType" : {
+      "type" : "struct",
+      "specs" : [ {
+        "identifier" : "level",
+        "name" : "平层状态",
+        "dataType" : {
+          "type" : "enum",
+          "specs" : {
+            "0" : "非平层",
+            "1" : "平层"
+          }
+        }
+      }, {
+        "identifier" : "run",
+        "name" : "行梯状态",
+        "dataType" : {
+          "type" : "enum",
+          "specs" : {
+            "0" : "静止",
+            "1" : "上行",
+            "2" : "下行"
+          }
+        }
+      }, {
+        "identifier" : "door",
+        "name" : "门开关状态",
+        "dataType" : {
+          "type" : "enum",
+          "specs" : {
+            "0" : "开门",
+            "1" : "关门"
+          }
+        }
+      }, {
+        "identifier" : "floor",
+        "name" : "当前楼层",
+        "dataType" : {
+          "type" : "int32",
+          "specs" : {
+            "min" : "-1000",
+            "max" : "1000",
+            "unit" : null,
+            "step" : null
+          }
+        }
+      }, {
+        "identifier" : "speed",
+        "name" : "电梯速度",
+        "dataType" : {
+          "type" : "int32",
+          "specs" : {
+            "min" : "0",
+            "max" : "1000000",
+            "unit" : "毫米每秒 / mm/s",
+            "step" : null
+          }
+        }
+      }, {
+        "identifier" : "person",
+        "name" : "电梯人数",
+        "dataType" : {
+          "type" : "int32",
+          "specs" : {
+            "min" : "0",
+            "max" : "100",
+            "unit" : null,
+            "step" : null
+          }
+        }
+      } ]
+    }
+  } ],
+  "events" : [ {
+    "identifier" : "fault",
+    "name" : "故障信息上报",
+    "desc" : null,
+    "functionMode" : "event",
+    "outputData" : [ {
+      "identifier" : "state",
+      "name" : "故障状态",
+      "dataType" : {
+        "type" : "enum",
+        "specs" : {
+          "1" : "产生",
+          "2" : "消除"
+        }
+      }
+    }, {
+      "identifier" : "code",
+      "name" : "故障编码",
+      "dataType" : {
+        "type" : "string",
+        "specs" : {
+          "length" : "30"
+        }
+      }
+    }, {
+      "identifier" : "info",
+      "name" : "运行信息",
+      "dataType" : {
+        "type" : "struct",
+        "specs" : [ {
+          "identifier" : "level",
+          "name" : "平层状态",
+          "dataType" : {
+            "type" : "enum",
+            "specs" : {
+              "0" : "非平层",
+              "1" : "平层"
+            }
+          }
+        }, {
+          "identifier" : "run",
+          "name" : "行梯状态",
+          "dataType" : {
+            "type" : "enum",
+            "specs" : {
+              "0" : "静止",
+              "1" : "上行",
+              "2" : "下行"
+            }
+          }
+        }, {
+          "identifier" : "door",
+          "name" : "门开关状态",
+          "dataType" : {
+            "type" : "enum",
+            "specs" : {
+              "0" : "开门",
+              "1" : "关门"
+            }
+          }
+        }, {
+          "identifier" : "floor",
+          "name" : "当前楼层",
+          "dataType" : {
+            "type" : "int32",
+            "specs" : {
+              "min" : "-1000",
+              "max" : "1000",
+              "unit" : null,
+              "step" : null
+            }
+          }
+        }, {
+          "identifier" : "speed",
+          "name" : "电梯速度",
+          "dataType" : {
+            "type" : "int32",
+            "specs" : {
+              "min" : "0",
+              "max" : "1000000",
+              "unit" : "毫米每秒 / mm/s",
+              "step" : null
+            }
+          }
+        }, {
+          "identifier" : "person",
+          "name" : "电梯人数",
+          "dataType" : {
+            "type" : "int32",
+            "specs" : {
+              "min" : "0",
+              "max" : "100",
+              "unit" : null,
+              "step" : null
+            }
+          }
+        } ]
+      }
+    } ],
+    "functionType" : "u",
+    "eventType" : "error"
+  }, {
+    "identifier" : "work",
+    "name" : "运行信息上报",
+    "desc" : "请至少每隔1秒传一次，1秒之内的多次数据只保留一条",
+    "functionMode" : "event",
+    "outputData" : [ {
+      "identifier" : "point",
+      "name" : "时间点",
+      "dataType" : {
+        "type" : "date",
+        "specs" : { }
+      }
+    }, {
+      "identifier" : "sec",
+      "name" : "数据时长",
+      "dataType" : {
+        "type" : "int32",
+        "specs" : {
+          "min" : "0",
+          "max" : "3600",
+          "unit" : "秒 / s",
+          "step" : null
+        }
+      }
+    }, {
+      "identifier" : "info",
+      "name" : "运行信息",
+      "dataType" : {
+        "type" : "struct",
+        "specs" : [ {
+          "identifier" : "level",
+          "name" : "平层状态",
+          "dataType" : {
+            "type" : "enum",
+            "specs" : {
+              "0" : "非平层",
+              "1" : "平层"
+            }
+          }
+        }, {
+          "identifier" : "run",
+          "name" : "行梯状态",
+          "dataType" : {
+            "type" : "enum",
+            "specs" : {
+              "0" : "静止",
+              "1" : "上行",
+              "2" : "下行"
+            }
+          }
+        }, {
+          "identifier" : "door",
+          "name" : "门开关状态",
+          "dataType" : {
+            "type" : "enum",
+            "specs" : {
+              "0" : "开门",
+              "1" : "关门"
+            }
+          }
+        }, {
+          "identifier" : "floor",
+          "name" : "当前楼层",
+          "dataType" : {
+            "type" : "int32",
+            "specs" : {
+              "min" : "-1000",
+              "max" : "1000",
+              "unit" : null,
+              "step" : null
+            }
+          }
+        }, {
+          "identifier" : "speed",
+          "name" : "电梯速度",
+          "dataType" : {
+            "type" : "float",
+            "specs" : {
+              "min" : "0",
+              "max" : "10000",
+              "unit" : "米每秒 / m/s",
+              "step" : null
+            }
+          }
+        }, {
+          "identifier" : "person",
+          "name" : "电梯人数",
+          "dataType" : {
+            "type" : "int32",
+            "specs" : {
+              "min" : "0",
+              "max" : "100",
+              "unit" : null,
+              "step" : null
+            }
+          }
+        } ]
+      }
+    } ],
+    "functionType" : "u",
+    "eventType" : "info"
+  } ],
+  "services" : [ {
+    "name" : "实时运行状态",
+    "identifier" : "realInfo",
+    "functionType" : "u",
+    "functionMode" : "service",
+    "desc" : null,
+    "callType" : "a",
+    "input" : [ ],
+    "output" : [ {
+      "identifier" : "level",
+      "name" : "平层状态",
+      "dataType" : {
+        "type" : "enum",
+        "specs" : {
+          "0" : "非平层",
+          "1" : "平层"
+        }
+      }
+    }, {
+      "identifier" : "run",
+      "name" : "行梯状态",
+      "dataType" : {
+        "type" : "enum",
+        "specs" : {
+          "0" : "静止",
+          "1" : "上行",
+          "2" : "下行"
+        }
+      }
+    }, {
+      "identifier" : "door",
+      "name" : "门开关状态",
+      "dataType" : {
+        "type" : "enum",
+        "specs" : {
+          "0" : "开门",
+          "1" : "关门"
+        }
+      }
+    }, {
+      "identifier" : "floor",
+      "name" : "当前楼层",
+      "dataType" : {
+        "type" : "int32",
+        "specs" : {
+          "min" : "-1000",
+          "max" : "1000",
+          "unit" : null,
+          "step" : null
+        }
+      }
+    }, {
+      "identifier" : "speed",
+      "name" : "电梯速度",
+      "dataType" : {
+        "type" : "int32",
+        "specs" : {
+          "min" : "0",
+          "max" : "1000000",
+          "unit" : "毫米每秒 / mm/s",
+          "step" : null
+        }
+      }
+    }, {
+      "identifier" : "person",
+      "name" : "人体",
+      "dataType" : {
+        "type" : "enum",
+        "specs" : {
+          "0" : "无人",
+          "1" : "有人"
+        }
+      }
+    } ]
+  } ]
+}

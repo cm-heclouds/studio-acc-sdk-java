@@ -3,8 +3,8 @@ sdk:
     #    url: ssl://183.230.102.116:8883  加密连接
     url: tcp://218.201.45.7:1883
     # 产品ID
-    product-id: 34Fe7lv34M
+    product-id: wiN844csd6
     # 设备名称
-    dev-key: test123
+    dev-key: test
     # 产品key
-    access-key: wcNRh+HhX9UpWddNgxmPwZEpK5f3D1f/x9endYMZJT8=
+    access-key: CZ9BzTvJRRdruQuzkWlTnR/3s3uFlTGV1/czMwXza+U=

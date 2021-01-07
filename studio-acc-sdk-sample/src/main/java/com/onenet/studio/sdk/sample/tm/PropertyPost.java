@@ -4,8 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.onenet.studio.acc.sdk.OpenApi;
 import com.onenet.studio.acc.sdk.OpenApiExtention;
-import com.onenet.studio.acc.sdk.dto.P1p3arrayStructDTO;
-import com.onenet.studio.acc.sdk.dto.P2structStructDTO;
+import com.onenet.studio.acc.sdk.dto.LiftStructDTO;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -43,17 +42,16 @@ public class PropertyPost {
      * @param extention 物模型扩展API
      **/
     public void propertyUp(OpenApiExtention extention) {
-        List<P1p3arrayStructDTO> list = new ArrayList<>();
-        P1p3arrayStructDTO dto1 = new P1p3arrayStructDTO();
-        dto1.setP1p3p1a2(3L);
-        dto1.setP1p3p2enum(0);
-        list.add(dto1);
-        P2structStructDTO dto2 = new P2structStructDTO();
-        dto2.setP1p22("fdas");
-        dto2.setP2p11(3);
+        LiftStructDTO dto = new LiftStructDTO();
+        dto.setDoor(1);
+        dto.setFloor(1);
+        dto.setLevel(1);
+        dto.setPerson(1);
+        dto.setRun(1);
+        dto.setSpeed(1);
 
         try {
-            int result = extention.propertyUpload(5000, 1.2, list.toArray(new P1p3arrayStructDTO[list.size()]), dto2);
+            int result = extention.propertyUpload(5000, 1, "1.0", dto);
             System.out.println("up result : " + result);
         } catch (Exception e) {
             e.printStackTrace();

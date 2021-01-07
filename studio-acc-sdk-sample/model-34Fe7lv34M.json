@@ -1,29 +1,13 @@
 {
   "properties" : [ {
-    "identifier" : "doubleTest",
-    "name" : "dfdasf",
+    "identifier" : "p1-double",
+    "name" : "p1-double",
     "functionType" : "u",
     "accessMode" : "rw",
     "functionMode" : "property",
     "desc" : null,
     "dataType" : {
       "type" : "double",
-      "specs" : {
-        "min" : "2",
-        "max" : "3",
-        "unit" : null,
-        "step" : null
-      }
-    }
-  }, {
-    "identifier" : "longTest",
-    "name" : "fdasf",
-    "functionType" : "u",
-    "accessMode" : "rw",
-    "functionMode" : "property",
-    "desc" : null,
-    "dataType" : {
-      "type" : "int64",
       "specs" : {
         "min" : "0",
         "max" : "300",
@@ -32,43 +16,8 @@
       }
     }
   }, {
-    "identifier" : "test1",
-    "name" : "test1",
-    "functionType" : "u",
-    "accessMode" : "rw",
-    "functionMode" : "property",
-    "desc" : null,
-    "dataType" : {
-      "type" : "struct",
-      "specs" : [ {
-        "identifier" : "te12",
-        "name" : "te12",
-        "dataType" : {
-          "type" : "int32",
-          "specs" : {
-            "min" : "0",
-            "max" : "30",
-            "unit" : null,
-            "step" : null
-          }
-        }
-      }, {
-        "identifier" : "te11",
-        "name" : "te11",
-        "dataType" : {
-          "type" : "int32",
-          "specs" : {
-            "min" : "0",
-            "max" : "20",
-            "unit" : null,
-            "step" : null
-          }
-        }
-      } ]
-    }
-  }, {
-    "identifier" : "tru1",
-    "name" : "str1",
+    "identifier" : "p1-p3-array",
+    "name" : "p1-p3-array",
     "functionType" : "u",
     "accessMode" : "rw",
     "functionMode" : "property",
@@ -76,25 +25,13 @@
     "dataType" : {
       "type" : "array",
       "specs" : {
-        "length" : 10,
+        "length" : 5,
         "type" : "struct",
         "specs" : [ {
-          "identifier" : "asd1",
-          "name" : "asd1",
+          "identifier" : "p1-p3-p1-a2",
+          "name" : "p1-p3-p1-a1",
           "dataType" : {
-            "type" : "int32",
-            "specs" : {
-              "min" : "0",
-              "max" : "20",
-              "unit" : null,
-              "step" : null
-            }
-          }
-        }, {
-          "identifier" : "qwe1",
-          "name" : "qwe1",
-          "dataType" : {
-            "type" : "int32",
+            "type" : "int64",
             "specs" : {
               "min" : "0",
               "max" : "50",
@@ -102,83 +39,65 @@
               "step" : null
             }
           }
+        }, {
+          "identifier" : "p1-p3-p2-enum",
+          "name" : "p1-p3-p2-enum",
+          "dataType" : {
+            "type" : "enum",
+            "specs" : {
+              "0" : "1",
+              "1" : "2"
+            }
+          }
         } ]
       }
     }
+  }, {
+    "identifier" : "p2-struct",
+    "name" : "p2-struct",
+    "functionType" : "u",
+    "accessMode" : "rw",
+    "functionMode" : "property",
+    "desc" : null,
+    "dataType" : {
+      "type" : "struct",
+      "specs" : [ {
+        "identifier" : "p2-p1-1",
+        "name" : "p2-p1-1",
+        "dataType" : {
+          "type" : "int32",
+          "specs" : {
+            "min" : "0",
+            "max" : "100",
+            "unit" : null,
+            "step" : null
+          }
+        }
+      }, {
+        "identifier" : "p1-p2-2",
+        "name" : "p1-p2-2",
+        "dataType" : {
+          "type" : "string",
+          "specs" : {
+            "length" : "256"
+          }
+        }
+      } ]
+    }
   } ],
   "events" : [ {
-    "identifier" : "event-test2",
-    "name" : "fdsaffdsfa",
+    "identifier" : "e1-info",
+    "name" : "e1-info",
     "desc" : null,
     "functionMode" : "event",
     "outputData" : [ {
-      "identifier" : "fadsfqwe",
-      "name" : "fadsf",
-      "dataType" : {
-        "type" : "array",
-        "specs" : {
-          "length" : 10,
-          "type" : "struct",
-          "specs" : [ {
-            "identifier" : "fadsf",
-            "name" : "fdas",
-            "dataType" : {
-              "type" : "int32",
-              "specs" : {
-                "min" : "0",
-                "max" : "30",
-                "unit" : null,
-                "step" : null
-              }
-            }
-          }, {
-            "identifier" : "fads",
-            "name" : "fdsaf",
-            "dataType" : {
-              "type" : "bool",
-              "specs" : {
-                "true" : "fdas",
-                "false" : "fasd"
-              }
-            }
-          } ]
-        }
-      }
-    } ],
-    "functionType" : "u",
-    "eventType" : "info"
-  }, {
-    "identifier" : "eventTest",
-    "name" : "eventTest",
-    "desc" : null,
-    "functionMode" : "event",
-    "outputData" : [ {
-      "identifier" : "eventP1",
-      "name" : "eventP1",
-      "dataType" : {
-        "type" : "int32",
-        "specs" : {
-          "min" : "0",
-          "max" : "30",
-          "unit" : null,
-          "step" : null
-        }
-      }
-    }, {
-      "identifier" : "event-struct",
-      "name" : "event-struct",
+      "identifier" : "e1-json-e1",
+      "name" : "e1-json-e1",
       "dataType" : {
         "type" : "struct",
         "specs" : [ {
-          "identifier" : "p2-b",
-          "name" : "p3",
-          "dataType" : {
-            "type" : "date",
-            "specs" : { }
-          }
-        }, {
-          "identifier" : "p3d",
-          "name" : "fdas",
+          "identifier" : "e1-e2-struct-e1",
+          "name" : "e1-e2-struct-e1",
           "dataType" : {
             "type" : "int32",
             "specs" : {
@@ -188,85 +107,172 @@
               "step" : null
             }
           }
+        }, {
+          "identifier" : "e1-e2-int1",
+          "name" : "e1-e2-int1",
+          "dataType" : {
+            "type" : "int32",
+            "specs" : {
+              "min" : "0",
+              "max" : "100",
+              "unit" : null,
+              "step" : null
+            }
+          }
         } ]
+      }
+    }, {
+      "identifier" : "e1-array-e1",
+      "name" : "e1-array-e1",
+      "dataType" : {
+        "type" : "array",
+        "specs" : {
+          "length" : 5,
+          "type" : "struct",
+          "specs" : [ {
+            "identifier" : "e2-test-t1",
+            "name" : "e2-test-t1",
+            "dataType" : {
+              "type" : "bool",
+              "specs" : {
+                "true" : "123",
+                "false" : "321"
+              }
+            }
+          } ]
+        }
       }
     } ],
     "functionType" : "u",
-    "eventType" : "error"
+    "eventType" : "info"
+  }, {
+    "identifier" : "e2-warn",
+    "name" : "e2-warn",
+    "desc" : null,
+    "functionMode" : "event",
+    "outputData" : [ {
+      "identifier" : "e2-int-1",
+      "name" : "e2-int-1",
+      "dataType" : {
+        "type" : "int32",
+        "specs" : {
+          "min" : "0",
+          "max" : "100",
+          "unit" : null,
+          "step" : null
+        }
+      }
+    }, {
+      "identifier" : "e2-warn-e3",
+      "name" : "e2-warn-e3",
+      "dataType" : {
+        "type" : "date",
+        "specs" : { }
+      }
+    } ],
+    "functionType" : "u",
+    "eventType" : "alert"
   } ],
   "services" : [ {
-    "name" : "fdsa",
-    "identifier" : "serviceTest",
+    "name" : "s1-test",
+    "identifier" : "s1-test",
     "functionType" : "u",
     "functionMode" : "service",
     "desc" : null,
     "callType" : "s",
     "input" : [ ],
     "output" : [ {
-      "identifier" : "param1",
-      "name" : "param1",
+      "identifier" : "service--test-1",
+      "name" : "service--test-1",
       "dataType" : {
         "type" : "int32",
         "specs" : {
           "min" : "0",
-          "max" : "30",
+          "max" : "20",
           "unit" : null,
           "step" : null
         }
       }
     }, {
-      "identifier" : "fafdsa",
-      "name" : "fdsa",
-      "dataType" : {
-        "type" : "array",
-        "specs" : {
-          "length" : 3,
-          "type" : "struct",
-          "specs" : [ {
-            "identifier" : "qwer",
-            "name" : "qwer",
-            "dataType" : {
-              "type" : "int32",
-              "specs" : {
-                "min" : "0",
-                "max" : "50",
-                "unit" : null,
-                "step" : null
-              }
-            }
-          }, {
-            "identifier" : "poi",
-            "name" : "poi",
-            "dataType" : {
-              "type" : "double",
-              "specs" : {
-                "min" : "1",
-                "max" : "90",
-                "unit" : null,
-                "step" : null
-              }
-            }
-          } ]
-        }
-      }
-    }, {
-      "identifier" : "joyuo",
-      "name" : "fdsaadsbvadbdh",
+      "identifier" : "s1-s2-t",
+      "name" : "s1-s2-t",
       "dataType" : {
         "type" : "struct",
         "specs" : [ {
-          "identifier" : "efweerghdh",
-          "name" : "fdsafasd",
+          "identifier" : "s1-s2-t2",
+          "name" : "s1-s2-t1",
           "dataType" : {
-            "type" : "int32",
+            "type" : "double",
             "specs" : {
-              "min" : "3",
-              "max" : "9",
+              "min" : "0",
+              "max" : "100",
+              "unit" : null,
+              "step" : null
+            }
+          }
+        }, {
+          "identifier" : "s1-s2-t4",
+          "name" : "s1-s2-t3",
+          "dataType" : {
+            "type" : "int64",
+            "specs" : {
+              "min" : "0",
+              "max" : "100",
               "unit" : null,
               "step" : null
             }
           }
         } ]
+      }
+    } ]
+  }, {
+    "name" : "s2-test",
+    "identifier" : "s2-test",
+    "functionType" : "u",
+    "functionMode" : "service",
+    "desc" : null,
+    "callType" : "a",
+    "input" : [ ],
+    "output" : [ {
+      "identifier" : "s2-s1-p",
+      "name" : "s2-s1-p",
+      "dataType" : {
+        "type" : "array",
+        "specs" : {
+          "length" : 5,
+          "type" : "struct",
+          "specs" : [ {
+            "identifier" : "s2-s1-t8",
+            "name" : "s2-s1-t7",
+            "dataType" : {
+              "type" : "int32",
+              "specs" : {
+                "min" : "0",
+                "max" : "100",
+                "unit" : null,
+                "step" : null
+              }
+            }
+          }, {
+            "identifier" : "s2-s1-p8",
+            "name" : "s2-s1-p7",
+            "dataType" : {
+              "type" : "bitMap",
+              "specs" : {
+                "length" : 2,
+                "define" : [ {
+                  "bit" : 0,
+                  "0" : "fdsa",
+                  "1" : "fa"
+                }, {
+                  "bit" : 1,
+                  "0" : "fds",
+                  "1" : "we"
+                } ]
+              }
+            }
+          } ]
+        }
       }
     } ]
   } ]
