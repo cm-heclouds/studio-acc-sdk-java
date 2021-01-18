@@ -90,9 +90,7 @@ studio-acc-sdk-java
 
 物模型上报和下发的数据格式见[OneNET官方文档](https://open.iot.10086.cn/doc/iot_platform/book/device-connect&manager/thing-model/protocol/OneJSON/OneJSON-introduce.html)
 
-`注意：用户在使用物模型时需严格执行物模型定义填写的数据类型限制。如图所示，如int32、int64类型的数据，在物模型定义时会填写定义取值范围、步长等内容，则填写的数据应满足填写的取值范围和步长等要求，否则会上报失败`
-
-![物模型功能点定义界面](doc/tm_define.png)
+`注意：用户在使用物模型时需严格执行物模型定义填写的数据类型限制。如int32、int64类型的数据，在物模型定义时会填写定义取值范围、步长等内容，则填写的数据应满足填写的取值范围和步长等要求，否则会上报失败`
 
 ### **3.4.1.物模型功能总览**
 
