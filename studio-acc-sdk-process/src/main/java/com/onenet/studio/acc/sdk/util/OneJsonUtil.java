@@ -129,6 +129,9 @@ public class OneJsonUtil {
 
     public static String firstCharUpperCase(String str) {
         char[] cs = str.toCharArray();
+        if (97 > cs[0] || 122 < cs[0]) {
+            return str;
+        }
         cs[0] -= 32;
         return String.valueOf(cs);
     }
