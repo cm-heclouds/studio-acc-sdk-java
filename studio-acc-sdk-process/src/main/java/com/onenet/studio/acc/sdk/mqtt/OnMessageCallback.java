@@ -55,6 +55,9 @@ public class OnMessageCallback implements MqttCallback {
             //上行唤醒同步返回
             JSONObject jsonObject = JSONObject.parseObject(reply);
             String id = jsonObject.getString(KEY_ID);
+            if (Objects.isNull(id)) {
+                return;
+            }
             Object awaitObject = context.getAwaitObject(id);
             context.putReply(id, jsonObject);
             synchronized (awaitObject) {
