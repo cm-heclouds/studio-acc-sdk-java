@@ -651,7 +651,7 @@ public class OpenApiExtentionProcessor extends AbstractProcessor {
             }
             buildStructDto(dtoName, outputFields);
             ClassName classDto = ClassName.get("com.onenet.studio.acc.sdk.dto", dtoName + STRUCT_DTO_SUFFIX);
-            methodBuilder.addJavadoc(" @param " + identifier + " 标识符为" + identifier + "的服务输出参数\n");
+            methodBuilder.addJavadoc(" @param $N 标识符为$N的服务输出参数\n", identifier, service.getIdentifier());
             methodBuilder.addParameter(ParameterSpec.builder(classDto, identifier).build());
 
             OneJsonUtil.serviceInvokeReply(methodBuilder, "JSON.toJSON(" + identifier + ")");
