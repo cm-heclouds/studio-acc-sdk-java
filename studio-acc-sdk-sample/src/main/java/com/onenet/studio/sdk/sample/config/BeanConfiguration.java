@@ -24,7 +24,7 @@ public class BeanConfiguration {
     @Value("${sdk.api.access-key}")
     private String accessKey;
 
-    @Bean
+    @Bean(destroyMethod = "disconnect")
     public OpenApi openApi() throws Exception {
 //        ClassPathResource classPathResource = new ClassPathResource("certificate.pem");
 //        InputStream inputStream = classPathResource.getInputStream();
