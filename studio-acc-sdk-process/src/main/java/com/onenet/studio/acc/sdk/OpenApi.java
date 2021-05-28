@@ -175,6 +175,14 @@ public class OpenApi {
         this.mqttClientContext.serviceInvokePublish(identifier, oneJson);
     }
 
+    /**
+     * 断开连接
+     *
+     * @throws Exception
+     */
+    public void disconnect() throws Exception {
+        mqttClientContext.getMqttClient().disconnect();
+    }
 
     public static final class Builder {
         /**
