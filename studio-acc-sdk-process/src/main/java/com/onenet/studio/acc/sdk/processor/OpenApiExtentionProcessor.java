@@ -582,7 +582,7 @@ public class OpenApiExtentionProcessor extends AbstractProcessor {
             buildStructDto(dtoName, outputFields);
             ClassName classDto = ClassName.get("com.onenet.studio.acc.sdk.dto", dtoName + STRUCT_DTO_SUFFIX);
             params.add(ParameterSpec.builder(classDto, identifier).build());
-            builder.addJavadoc(" @param " + identifier + " 事件输出标识符为" + identifier +"的参数\n");
+            builder.addJavadoc(" @param $N 事件输出标识符为$N的参数\n", identifier, event.getIdentifier());
         }
         builder.addParameters(params)
                 .addModifiers(Modifier.PUBLIC)
